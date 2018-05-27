@@ -16,7 +16,7 @@ import socket.server.MySocketChannel;
 public class ClientStart {
 	
 	
-	public void connectServer(String host,int port) throws InterruptedException {
+	public void connectServer(String host,int port, final int num) throws InterruptedException {
 		
 		EventLoopGroup group = new NioEventLoopGroup();//默认是cpu内核数的2倍
 		try {
@@ -29,7 +29,7 @@ public class ClientStart {
 				protected void initChannel(SocketChannel ch) throws Exception {
 					ch.pipeline().addLast("socket-decoder", new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, -4, 4));
 					//ch.pipeline().addLast( new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 4, 1, 0, 0));
-					 ch.pipeline().addLast(new MyClientChannel());
+					 ch.pipeline().addLast(new MyClientChannel(num));
 					
 					
 				}

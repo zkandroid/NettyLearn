@@ -33,8 +33,8 @@ public class SocketStart {
 				//当新连接accept的时候，这个方法会调用 
 				protected void initChannel(SocketChannel ch) throws Exception {
 					//4,链路创建的时候创建并初始化ChannelPipeline
-					//ch.pipeline().addLast("socket-decoder", new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, -4, 4));//http://www.voidcn.com/article/p-gzqzzsyz-bqy.html
-					ch.pipeline().addLast( new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 4, 1, 0, 0));
+					ch.pipeline().addLast("socket-decoder", new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, -4, 4));//http://www.voidcn.com/article/p-gzqzzsyz-bqy.html
+					//ch.pipeline().addLast( new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 4, 1, 0, 0));
 					ch.pipeline().addLast(new MySocketChannel());
 	     	
 				}		
