@@ -18,7 +18,7 @@ public class ClientStart {
 	
 	public void connectServer(String host,int port, final int num) throws InterruptedException {
 		
-		EventLoopGroup group = new NioEventLoopGroup();//默认是cpu内核数的2倍
+		EventLoopGroup group = new NioEventLoopGroup(1);//默认是cpu内核数的2倍
 		try {
 			Bootstrap b = new Bootstrap();//1,创建客户端连接实例
 			b.group(group)
@@ -35,10 +35,11 @@ public class ClientStart {
 				}
 			}).option(ChannelOption.SO_KEEPALIVE, true)
 			.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 3000);//连接超时
-			
-			ChannelFuture f = b.connect(host, port).sync();
-			f.channel().closeFuture().sync();
-			
+			//for(int x =0;x<1;x++) {
+				ChannelFuture f = b.connect(host, port).sync();
+				f.channel().closeFuture().sync();
+				
+			//}
 		} finally {
 			group.shutdownGracefully();
 		}

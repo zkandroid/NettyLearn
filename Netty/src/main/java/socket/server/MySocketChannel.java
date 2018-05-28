@@ -28,7 +28,7 @@ public class MySocketChannel extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext context, Object msg) throws IllegalArgumentException, IllegalAccessException, JsonParseException, JsonMappingException, IOException {
 
 		ByteBuf buf = null;
-	
+		System.out.println("----------");
 			buf = (ByteBuf)msg;
 			//System.out.println("buf ref count: " + buf.refCnt());
 			//System.out.println("get connection: " + ctx.channel().remoteAddress());
@@ -48,8 +48,8 @@ public class MySocketChannel extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
-    	ctx.writeAndFlush(Unpooled.copiedBuffer("Server send", CharsetUtil.UTF_8));
-        ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
+    	//ctx.writeAndFlush(Unpooled.copiedBuffer("Server send", CharsetUtil.UTF_8));
+        //ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
     }
 
     @Override
