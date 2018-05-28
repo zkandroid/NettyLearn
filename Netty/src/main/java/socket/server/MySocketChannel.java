@@ -30,8 +30,8 @@ public class MySocketChannel extends ChannelInboundHandlerAdapter {
 		ByteBuf buf = null;
 		System.out.println("----------");
 			buf = (ByteBuf)msg;
-			//System.out.println("buf ref count: " + buf.refCnt());
-			//System.out.println("get connection: " + ctx.channel().remoteAddress());
+			System.out.println("buf ref count: " + buf.refCnt());
+			//System.out.println("get connection: " + msg.channel().remoteAddress());
 			MessageHeader header =new MessageHeader();
 			header.decode(buf);
 			//MessageCenter mc = MyFactory.context.getBean("MessageCenter", MessageCenter.class);

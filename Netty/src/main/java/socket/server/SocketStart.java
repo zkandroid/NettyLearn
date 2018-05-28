@@ -13,7 +13,7 @@ import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 
 public class SocketStart {
 	
-	public void startServer(String host,int port) throws InterruptedException {
+	public void startServer(String host,int port) throws Exception {
 		/*EventLoopGroup实际上就是EventLoop的数组，EventLoop的职责是处理所有注册到本地
 		 * 线程多路复用器Selector上的Channel
 		 */
